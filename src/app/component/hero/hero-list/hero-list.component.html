@@ -16,8 +16,8 @@
   <button (click)="CallChild()">Call Child</button>
   <confirm-dialog #dialog></confirm-dialog>
 
-  <div *ngIf="things$ | async; else loading; let things">
-    <div>
+  <div *ngIf="things$ | async as things ">
+    <div *ngIf="things.length > 0">
       <table>
         <tr>
           <th>Car</th>
@@ -28,7 +28,6 @@
           <td>{{i.shoes}}</td>
         </tr>
       </table>
-      {{i.car}}
     </div>
   </div>
   <ng-template #loading>

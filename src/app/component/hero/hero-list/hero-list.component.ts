@@ -22,18 +22,7 @@ declare var $: any;
 export class HeroListComponent implements OnInit {
 
   things$ = Observable.of(
-    [{
-    car: 'Honda',
-    shoes: 'Nike',
-    shirt: 'Tom Ford',
-    watch: 'Timex'
-   },
-    {
-      car: 'Honda A',
-      shoes: 'Nike',
-      shirt: 'Tom Ford',
-      watch: 'Timex'
-    }
+    [
   ]).delay(1000);
 
   private subject: Subject<boolean>;

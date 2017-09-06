@@ -7,10 +7,8 @@ import {HttpModule} from "@angular/http";
 import {routing} from "./app-routing";
 import {RouterModule} from "@angular/router";
 import {HeroModule} from "./component/hero/hero.module";
-import {UiTableComponent} from './helper/ui-table/ui-table.component';
-import {SharedComponent} from './component/shared/shared.component';
 import {SharedModule} from "./component/shared/shared.module";
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import {HashLocationStrategy, LocationStrategy, PathLocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -26,9 +24,9 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     SharedModule,
     routing
   ],
-  providers: [],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {
 }
