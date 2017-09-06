@@ -1,0 +1,15 @@
+<ul>
+  <li (click)="selectPage(1)" [class.disabled]="currentPageSelect == 1">
+    First
+  </li>
+  <li (click)="selectPage(currentPageSelect-1)" [class.disabled]="currentPageSelect==1 ">
+    Previous
+  </li>
+  <li *ngFor="let item of pagers" (click)="selectPage(item)" [class.selected]="item===currentPageSelect">{{item}}</li>
+  <li (click)="selectPage(currentPageSelect+1)" [class.disabled]="currentPageSelect==TotalPage">
+    Next
+  </li>
+  <li (click)="selectPage(TotalPage)" [class.disabled]="currentPageSelect==TotalPage">
+    Last
+  </li>
+</ul>

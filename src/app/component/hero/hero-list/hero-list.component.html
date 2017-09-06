@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-4">
+    <input type="text" class="form-control" [(ngModel)]="search" [formControl]="name"/>
+  </div>
+  <div class="col-md-8">
+    <div style="height: 300px">
+      <ui-table [data]="users" [columns]="columns"></ui-table>
+    </div>
+
+    <div>
+      <ui-paging *ngIf="total > 0" (changePage)="changePage($event)" [total]="total" #child></ui-paging>
+    </div>
+
+  </div>
+
+  <button (click)="CallChild()">Call Child</button>
+  <confirm-dialog #dialog></confirm-dialog>
+
+  <div *ngIf="things$ | async; else loading; let things">
+    <div>
+      <table>
+        <tr>
+          <th>Car</th>
+          <th>Shoes</th>
+        </tr>
+        <tr *ngFor="let i of things">
+          <td>{{i.car}}</td>
+          <td>{{i.shoes}}</td>
+        </tr>
+      </table>
+      {{i.car}}
+    </div>
+  </div>
+  <ng-template #loading>
+    Loading your things...
+  </ng-template>
+
+  <div *ngIf="(things$ | async)?.length == 0">
+    No record
+  </div>
+</div>

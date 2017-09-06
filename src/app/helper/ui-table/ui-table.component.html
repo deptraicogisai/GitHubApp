@@ -1,0 +1,19 @@
+<table class="table table-responsive">
+  <tr>
+    <th *ngFor="let column of columns">
+      {{column.caption}}
+    </th>
+  </tr>
+  <ng-container *ngIf="data">
+
+    <tr *ngFor="let item of data">
+      <td *ngFor="let column of columns">
+        <span *ngIf="!column.isImage">{{item[column.field]}}</span>
+        <span *ngIf="column.isImage"><img [src]="item[column.field]" width="50" class="img-circle"/></span>
+      </td>
+    </tr>
+  </ng-container>
+  <tr *ngIf="!data">
+    No records...
+  </tr>
+</table>
